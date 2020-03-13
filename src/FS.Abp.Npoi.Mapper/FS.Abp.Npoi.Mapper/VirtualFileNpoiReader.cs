@@ -23,7 +23,7 @@ namespace FS.Abp.Npoi.Mapper
             var file = _virtualFileProvider.GetFileInfo(filePath);
             if (!file.Exists)
                 return null;              
-            global::Npoi.Mapper.Mapper mapper = new global::Npoi.Mapper.Mapper(file.PhysicalPath);            
+            global::Npoi.Mapper.Mapper mapper = new global::Npoi.Mapper.Mapper(file.CreateReadStream());            
             List<T> sheet = mapper.Take<T>(sheetName).Select(x=>x.Value).ToList();       
             return sheet;
         }
