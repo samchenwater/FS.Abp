@@ -20,7 +20,6 @@ using Volo.Abp.Http;
 using Volo.Abp.IO;
 using Volo.Abp.Json;
 using Volo.Abp.Threading;
-using Volo.Abp.VirtualFileSystem;
 using static Volo.Abp.Cli.ProjectBuilding.AbpIoSourceCodeStore;
 
 namespace FS.Abp.Cli.ProjectBuilding
@@ -29,8 +28,6 @@ namespace FS.Abp.Cli.ProjectBuilding
     public class GitHubSourceCodeStore : ISourceCodeStore, ITransientDependency
     {
         public ILogger<GitHubSourceCodeStore> Logger { get; set; }
-
-        protected IVirtualFileProvider VirtualFileProvider { get; }
 
         protected AbpCliOptions Options { get; }
 
@@ -46,7 +43,6 @@ namespace FS.Abp.Cli.ProjectBuilding
             IOptions<AbpCliOptions> options,
             IJsonSerializer jsonSerializer,
             ICancellationTokenProvider cancellationTokenProvider,
-            IVirtualFileProvider virtualFileProvider,
             IOptions<OctokitOptions> octokitOptions,
             IGitHubClient gitHubClient
             )
@@ -54,7 +50,6 @@ namespace FS.Abp.Cli.ProjectBuilding
             JsonSerializer = jsonSerializer;
             CancellationTokenProvider = cancellationTokenProvider;
             Options = options.Value;
-            VirtualFileProvider = virtualFileProvider;
 
             Logger = NullLogger<GitHubSourceCodeStore>.Instance;
 

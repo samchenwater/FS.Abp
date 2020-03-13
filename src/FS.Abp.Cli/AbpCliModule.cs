@@ -3,15 +3,14 @@ using Microsoft.Extensions.Options;
 using Octokit;
 using Volo.Abp.Autofac;
 using Volo.Abp.Cli;
+using FS.Abp.Cli.Commands;
 using Volo.Abp.Modularity;
-using Volo.Abp.VirtualFileSystem;
 
 namespace FS.Abp.Cli
 {
     [DependsOn(
         typeof(AbpCliCoreModule),
-        typeof(AbpAutofacModule),
-        typeof(AbpVirtualFileSystemModule)
+        typeof(AbpAutofacModule)
     )]
     public class AbpCliModule : AbpModule
     {
@@ -28,11 +27,12 @@ namespace FS.Abp.Cli
                 options.ProductHeaderName = "YinChang0626";
                 options.OwnerName = "YinChang0626";
                 options.RepositoryName = "abp";
-                options.BranchName = "feature/fs_abp_cli";
+                options.BranchName = "feature/templates";
             });
-            Configure<AbpVirtualFileSystemOptions>(options =>
+
+            Configure<AbpCliOptions>(options =>
             {
-                options.FileSets.AddEmbedded<AbpCliModule>("FS.Abp.Cli");
+                options.Commands["rename"] = typeof(ReNameCommand);
             });
 
         }

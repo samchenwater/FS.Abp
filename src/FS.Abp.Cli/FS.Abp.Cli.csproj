@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\..\..\common.props" />
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -9,12 +9,6 @@
     <PackageOutputPath>./nupkg</PackageOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Files\ModuleInfo\FS.Common.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Files\**\*.*" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
     <PackageReference Include="Octokit.Reactive" Version="0.36.0" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1" />
@@ -22,7 +16,6 @@
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
     <PackageReference Include="Volo.Abp.Autofac" Version="2.2.1" />
     <PackageReference Include="Volo.Abp.Cli.Core" Version="2.2.1" />
-    <PackageReference Include="Volo.Abp.VirtualFileSystem" Version="2.2.1" />
   </ItemGroup>
 
 </Project>
