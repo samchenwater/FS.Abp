@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Modularity;
 
-namespace Volo.Abp.Account.HttpApi
+namespace Volo.Abp.Account.Host.HttpApi
 {
     [DependsOn(
         typeof(AbpAccountApplicationModule),

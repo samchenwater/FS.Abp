@@ -1,7 +1,7 @@
 ﻿using Volo.Abp.Modularity;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 
-namespace Volo.Abp.TenantManagement.HttpApi
+namespace Volo.Abp.TenantManagement.Host.HttpApi
 {
     [DependsOn(
         typeof(AbpTenantManagementEntityFrameworkCoreModule),

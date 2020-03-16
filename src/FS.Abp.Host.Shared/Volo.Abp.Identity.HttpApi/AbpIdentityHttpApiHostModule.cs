@@ -5,7 +5,7 @@ using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Identity.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
-namespace Volo.Abp.Identity.HttpApi
+namespace Volo.Abp.Identity.Host.HttpApi
 {
     [DependsOn(
         typeof(AbpIdentityApplicationModule),

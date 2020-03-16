@@ -1,7 +1,7 @@
 ﻿using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
-namespace Volo.Abp.FeatureManagement.HttpApi
+namespace Volo.Abp.FeatureManagement.Host.HttpApi
 {
     [DependsOn(
         typeof(AbpFeatureManagementApplicationModule),

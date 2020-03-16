@@ -3,7 +3,7 @@ using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.PermissionManagement.HttpApi;
 using Volo.Abp.PermissionManagement.Identity;
 
-namespace Volo.Abp.PermissionManagement.HttpApi
+namespace Volo.Abp.PermissionManagement.Host.HttpApi
 {
     [DependsOn(
         typeof(AbpPermissionManagementDomainIdentityModule),

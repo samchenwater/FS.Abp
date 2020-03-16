@@ -3,11 +3,11 @@
 namespace FS.Abp.Host.HttpApi
 {
     [DependsOn(
-        typeof(Volo.Abp.Account.HttpApi.AbpAccountHttpApiHostModule),
-        typeof(Volo.Abp.Identity.HttpApi.AbpIdentityHttpApiHostModule),
-        typeof(Volo.Abp.PermissionManagement.HttpApi.AbpPermissionManagementHttpApiHostModule),
-        typeof(Volo.Abp.FeatureManagement.HttpApi.AbpFeatureManagementHttpApiHostModule),
-        typeof(Volo.Abp.TenantManagement.HttpApi.AbpTenantManagementHttpApiHostModule)
+        typeof(Volo.Abp.Account.Host.HttpApi.AbpAccountHttpApiHostModule),
+        typeof(Volo.Abp.Identity.Host.HttpApi.AbpIdentityHttpApiHostModule),
+        typeof(Volo.Abp.PermissionManagement.Host.HttpApi.AbpPermissionManagementHttpApiHostModule),
+        typeof(Volo.Abp.FeatureManagement.Host.HttpApi.AbpFeatureManagementHttpApiHostModule),
+        typeof(Volo.Abp.TenantManagement.Host.HttpApi.AbpTenantManagementHttpApiHostModule)
         )]
     public class AbpHttpApiHostModule : AbpModule
     {
