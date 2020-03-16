@@ -2,6 +2,7 @@
 using Serilog;
 using Serilog.Events;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp;
 using Volo.Abp.Cli;
@@ -13,6 +14,9 @@ namespace FS.Abp.Cli
     {
         private static void Main(string[] args)
         {
+            var mergeFSprojectArgs = args.ToList();
+            mergeFSprojectArgs.AddRange(new[] { "--local-framework-ref", "--abp-path", @"..\..\..\.." });
+            args = mergeFSprojectArgs.ToArray();
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
