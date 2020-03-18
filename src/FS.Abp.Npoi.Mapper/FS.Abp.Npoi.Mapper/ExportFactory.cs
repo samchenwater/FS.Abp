@@ -1,4 +1,5 @@
-﻿using NPOI.SS.UserModel;
+﻿using NPOI.HSSF.UserModel;
+using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
@@ -9,27 +10,36 @@ namespace FS.Abp.Npoi.Mapper
 {
     public interface IExportFactory:Volo.Abp.DependencyInjection.ITransientDependency
     {
-        byte[] Produce<T>(string sheetName, IEnumerable<T> modelJson)
-            where T : class;
+        byte[] Produce(ExportOption exportOption);     
     }
     public class ExportFactory : IExportFactory
-    {
-        public byte[] Produce<T>(string sheetName, IEnumerable<T> modelJson)
-            where T:class
+    {      
+        public byte[] Produce(ExportOption exportOption)            
         {
-            IWorkbook workbook = new XSSFWorkbook();
-            ISheet sheet = workbook.CreateSheet(sheetName);
-            var mapper = new global::Npoi.Mapper.Mapper(workbook);
-            mapper.ForHeader(cell =>
+            var i = 0;
+            IWorkbook workbook= new XSSFWorkbook();
+            if (exportOption.ExportFormat == ExportFormat.XLS)
             {
-                sheet.AutoSizeColumn(cell.ColumnIndex);
+                 workbook = new HSSFWorkbook();
+            }                                 
+            var mapper = new global::Npoi.Mapper.Mapper(workbook);
+            exportOption.ExportData.ForEach( data =>
+            {
+                ISheet sheet = workbook.CreateSheet(data.SheetName);
+               
+                 mapper.ForHeader(cell =>
+                 {
+                     sheet.AutoSizeColumn(cell.ColumnIndex);
+                 });
+                mapper.Put<Object>(data.Datas, i);
+                i++;
             });
-            mapper.Put<T>(modelJson, 0);
+            
             MemoryStream memoryStream = new MemoryStream();
             mapper.Workbook.Write(memoryStream);
             var datas = memoryStream.ToArray();
             memoryStream.Close();
-            return datas;
+            return datas;         
         }
     }
 }
